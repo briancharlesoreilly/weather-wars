@@ -10,31 +10,9 @@ import GetWeatherData from "./Components/GetWeatherData";
 import './App.css';
 
 
-// halifax 49538
-
 function App() {
 
-  const [playerSelection, setPlayerSelection] = useState([]);
-
-  // API call to get weather data for all provinces
-    useEffect(() => {
-    axios({
-      url: "http://dataservice.accuweather.com/currentconditions/v1/49538",
-      method: "GET",
-      params: {
-        apikey: "oU28MIP77GV30LbR2diTL2ACEcTuAWoZ",
-        language: "en-us",
-        details: false,
-      },
-    }).then(response => {
-      // store response data in variable
-      const responseData = response.data;
-      // set data into playerSelection state
-      setPlayerSelection(responseData[0].Temperature);
-      })
-    }, [])
-  
-    console.log("player selection state", playerSelection)
+  GetWeatherData();
 
   return (
     <div className="App">
@@ -52,6 +30,9 @@ function App() {
         <section className="fight-panel"> {/* fight panel section START */}
           <div className="computer-choice">
             <h3>Computer Chooses { ComputerChoice() }</h3>
+          </div>
+          <div className="player-choice">
+            <GetWeatherData />
           </div>
 
           <label htmlFor="province-select"></label>
