@@ -5,22 +5,31 @@ import axios from "axios";
 // Modules
 import { citiesList } from "../modules/citiesList";
 
-const apiKey = "oU28MIP77GV30LbR2diTL2ACEcTuAWoZ";
-
 // Take in player selection city choice
 // find matching ID for that city in the array citiesList
 // Store that ID number to search the API in GetWeatherData
-const getCityID = () => {
-  // console.log(citiesList);
+const getCityID = (city) => {
+  const findCityID = citiesList.find(e => e.city === city);
+  return findCityID.id;
 }
 
-  // API call to get weather data for all provinces
-const GetWeatherData = () => {
+const apiKey = "oU28MIP77GV30LbR2diTL2ACEcTuAWoZ";
+const baseURL = "http://dataservice.accuweather.com/currentconditions/v1/";
+
+  // API call to get weather data
+const GetWeatherData = (props) => {
   const [playerSelection, setPlayerSelection] = useState([]);
+  // find ID of city for API search, add to searchURL
+  console.log(props);
+  // const name = props.cityName;
+  // console.log("name", name)
+  // const { cityName } = props;
+  const ID = getCityID("Halifax");
+  const searchURL = `${baseURL}${ID}`; 
 
   useEffect(() => {
     axios({
-      url: "http://dataservice.accuweather.com/currentconditions/v1/49538",
+      url: searchURL,
       method: "GET",
       params: {
         apikey: apiKey,
@@ -35,25 +44,16 @@ const GetWeatherData = () => {
       const tempText = responseData[0].WeatherText;
       const combatDetailsPlayer = [temp, tempUnit, tempText];
 
-      // console.log("combat details player", combatDetailsPlayer);
       // set data into playerSelection state
       setPlayerSelection(combatDetailsPlayer);
     })
   }, [])
 
-  console.log(playerSelection);
-  console.log("Temperature", playerSelection[0]);
   const playerTemp = playerSelection[0];
   const playerTempUnit = playerSelection[1];
   const playerTempText = playerSelection[2];
 
-  // console.log("player selection", playerSelection.Metric);
-  // const playerTemp = playerSelection.Metric;
-  // console.log("temp object", playerTemp);
-  // const playerTempUnit = playerSelection.Metric.Unit;
-  // const playerCombatReady = `${playerTemp}${playerTempUnit}`;
-  // console.log("Player Selection", playerSelection);
-  // console.log("Combat Ready Data Info", playerCombatReady);
+  // console.log("player selection", playerSelection);
 
     // WORKING REFERENCE HTML
     // return a div and display the temperature and city name
@@ -64,5 +64,4 @@ const GetWeatherData = () => {
   );
 }
   
-
   export default GetWeatherData

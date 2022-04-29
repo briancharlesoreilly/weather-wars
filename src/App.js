@@ -32,7 +32,8 @@ function App() {
             <h3>Computer Chooses { ComputerChoice() }</h3>
           </div>
           <div className="player-choice">
-            <GetWeatherData />
+            <GetWeatherData
+              cityName="Halifax"/>
           </div>
 
           <label htmlFor="province-select"></label>
