@@ -32,7 +32,7 @@ function App() {
             <h3>
               Computer Chooses
               <ComputerChoice />
-              <GetWeatherData 
+              <GetWeatherData
               cityName="Toronto"
               />
             </h3>
