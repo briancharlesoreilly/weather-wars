@@ -27,14 +27,11 @@ function App() {
 
       <main> {/* Main START */}
 
-
         <section className="fight-panel"> {/* fight panel section START */}
           <div className="computer-choice">
             <h3>
               Computer Chooses
-              <ComputerChoice
-              computerChoice="Toronto" 
-              />
+              <ComputerChoice />
               <GetWeatherData 
               cityName="Toronto"
               />

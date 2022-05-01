@@ -5,11 +5,15 @@
 // call the weather API and get weather data about the computer choice
     // store this weathter data about computer choice, pass as props to the function that will decide the winner of the fight
 
-const ComputerChoice = (props) => {
-  console.log("from computer choice", props);
-  const computerCityChoice = props.computerChoice; 
+// Modules
+import { citiesList } from "../modules/citiesList";
+
+const ComputerChoice = () => {
+
+  const randomCity = citiesList[Math.floor(Math.random() * citiesList.length)].city; 
+
   return (
-    <p>{computerCityChoice}</p>
+    <p>{randomCity}</p>
   )
 }
 

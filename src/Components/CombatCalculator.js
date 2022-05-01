@@ -1,0 +1,1 @@
+// Function that compares the values of player choice and computer choice temperatures and returns the winner. MVP goal is whichever temperature is higher is the winner
