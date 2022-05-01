@@ -9,9 +9,9 @@
 import { citiesList } from "../modules/citiesList";
 
 const ComputerChoice = () => {
-
+  // choose random city from array of capital cities for computer fighter choice
   const randomCity = citiesList[Math.floor(Math.random() * citiesList.length)].city; 
-
+  // display a p tag with the choice to the page
   return (
     <p>{randomCity}</p>
   )
