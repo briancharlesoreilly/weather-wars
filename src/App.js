@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 // Components
 import ComputerChoice from "./Components/ComputerChoice";
+import PlayerChoice from "./Components/PlayerChoice";
 import GetWeatherData from "./Components/GetWeatherData";
 
 // Styles
@@ -29,11 +30,25 @@ function App() {
 
         <section className="fight-panel"> {/* fight panel section START */}
           <div className="computer-choice">
-            <h3>Computer Chooses { ComputerChoice() }</h3>
+            <h3>
+              Computer Chooses
+              <ComputerChoice
+              computerChoice="Toronto" 
+              />
+              <GetWeatherData 
+              cityName="Toronto"
+              />
+            </h3>
           </div>
           <div className="player-choice">
-            <GetWeatherData
+            <h3>
+              Player Chooses
+              <PlayerChoice 
               cityName="Halifax"/>
+            <GetWeatherData
+              cityName="Halifax"
+            />
+            </h3>
           </div>
 
           <label htmlFor="province-select"></label>

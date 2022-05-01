@@ -20,10 +20,9 @@ const baseURL = "http://dataservice.accuweather.com/currentconditions/v1/";
 const GetWeatherData = (props) => {
   const [playerSelection, setPlayerSelection] = useState([]);
   // find ID of city for API search, add to searchURL
-  console.log(props);
-  // const name = props.cityName;
-  // console.log("name", name)
-  // const { cityName } = props;
+
+  console.log("from GetWeatherData", props);
+
   const ID = getCityID("Halifax");
   const searchURL = `${baseURL}${ID}`; 
 
@@ -59,7 +58,7 @@ const GetWeatherData = (props) => {
     // return a div and display the temperature and city name
   return (
     <div>
-      <h3>Halifax is {`${playerTemp}°${playerTempUnit} and ${playerTempText}`}</h3>
+      <h3>{`${playerTemp}°${playerTempUnit} and ${playerTempText}`}</h3>
     </div>
   );
 }
