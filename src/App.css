@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+/****************/
+/*    HEADER    */
+/****************/
+.instructions-active {
+  display: none;
+}
+
+.instructions-inactive {
+  display: none;
+}

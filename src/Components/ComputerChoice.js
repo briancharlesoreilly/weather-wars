@@ -7,13 +7,20 @@
 
 // Modules
 import { citiesList } from "../modules/citiesList";
+import GetWeatherData from "./GetWeatherData";
+
 
 const ComputerChoice = () => {
   // choose random city from array of capital cities for computer fighter choice
   const randomCity = citiesList[Math.floor(Math.random() * citiesList.length)].city; 
   // display a p tag with the choice to the page
   return (
-    <p>{randomCity}</p>
+    <div>
+      <p>{randomCity}</p>
+      <GetWeatherData
+      cityName= {randomCity}
+      />
+    </div>
   )
 }
 

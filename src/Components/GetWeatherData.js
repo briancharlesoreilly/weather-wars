@@ -5,7 +5,7 @@ import axios from "axios";
 // Modules
 import { citiesList } from "../modules/citiesList";
 
-// Take in player selection city choice
+// Take in player selected city choice
 // find matching ID for that city in the array citiesList
 // Store that ID number to search the API in GetWeatherData
 const getCityID = (city) => {
@@ -21,16 +21,10 @@ const GetWeatherData = (props) => {
   const [playerSelection, setPlayerSelection] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
-  // I DONT THINK I NEED TO SET STATE BELOW JUST A DESPERATE MOVE
-  const [cityName, setCityName] = useState({});
+
   // find ID of city for API search, add to searchURL
-  console.log("from GetWeatherData", props);
-
-  // NOTE, AS IT IS NOW. IF I RUN THE BELOW CODE WITH "Halifax", "Toronto", "Vancouver", etc in tthe getCityID function, it will return the same weather data for both times it is called in them ain page. If I run getCityID() with props.cityName and SAVE the react file, it will PROPERLY return the correct data for BOTH cities... however when I REFRESH the page IT ERRORS OUT?????
-
-    const ID = getCityID("Toronto");
-    const searchURL = `${baseURL}${ID}`; 
-  
+  const ID = getCityID(props.cityName);
+  const searchURL = `${baseURL}${ID}`; 
   
   useEffect(() => {
     axios({
@@ -42,24 +36,22 @@ const GetWeatherData = (props) => {
         details: false,
       },
     }).then(response => {
-      // store response data in variables
+      // store response data in variables for temperature, tempurature units (celsius or fahrenheit), and text description.
       const responseData = response.data;
       const temp = responseData[0].Temperature.Metric.Value;
       const tempUnit = responseData[0].Temperature.Metric.Unit;
       const tempText = responseData[0].WeatherText;
+      // store these variables in an array 
       const combatDetailsPlayer = [temp, tempUnit, tempText];
-
       // set data into playerSelection state
       setPlayerSelection(combatDetailsPlayer);
       setLoading(false);
     })
-  }, [searchURL])
+  }, [props.cityName])
 
   const playerTemp = playerSelection[0];
   const playerTempUnit = playerSelection[1];
   const playerTempText = playerSelection[2];
-
-  // console.log("player selection", playerSelection);
 
   // if data has not been rec'd from API and no combat details have been set, return a LOADING message to the page...
   if(loading) {
@@ -72,7 +64,7 @@ const GetWeatherData = (props) => {
   // if data HAS been recieved and combat details have been set...return a div and display the temperature and city name
   return (
     <div>
-      <h3>{`${playerTemp}°${playerTempUnit} and ${playerTempText}`}</h3>
+      <p>{`${playerTemp}°${playerTempUnit} and ${playerTempText}`}</p>
     </div>
   );
 }

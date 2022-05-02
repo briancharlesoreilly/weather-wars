@@ -7,47 +7,43 @@ import ComputerChoice from "./Components/ComputerChoice";
 import PlayerChoice from "./Components/PlayerChoice";
 import GetWeatherData from "./Components/GetWeatherData";
 import GetCityID from "./Components/GetCityId";
+import ToggleClass from "./Components/ToggleClass";
 
 // Styles
 import './App.css';
 
-
 function App() {
 
-  GetWeatherData();
+  const [isActive, setActive] = useState(false);
+  const ToggleClass = () => {
+    setActive(!isActive);
+    console.log("is active:", isActive);
+  }
 
   return (
     <div className="App">
 
       <header>
         <h1>Weather Wars</h1>
-        <h2>Instructions</h2>
-        <p>Instructions: The game is Weather Wars. There are 10 available fighters, each represented by the Capital City of each Province of our home and native land.</p>
-        <p>The bloodthirsty and heartless AI known as Math Random will select a city for combat. Brave adventurer, you must choose a city to fight against the evil M. Rando in head to head combat. A victor will be decided based on the REAL TIME temperature difference between the two cities, delivered magically with the aid of a mysterious figure who goes by "AXIOS", associated with the secretive cabal simply known as "API".</p>
+        <div className={isActive ? ".instructions-active" : ".instructions-inactive"}>
+          <h2>Instructions</h2>
+          <p>Instructions: The game is Weather Wars. There are 10 available fighters, each represented by the Capital City of each Province of our home and native land.</p>
+          <p>The bloodthirsty and heartless AI known as Math Random will select a city for combat. Brave adventurer, you must choose a city to fight against the evil M. Rando in head to head combat. A victor will be decided based on the REAL TIME temperature difference between the two cities, delivered magically with the aid of a mysterious figure who goes by "AXIOS", associated with the secretive cabal simply known as "API".</p>
+        </div>
+          <button onClick={ () => ToggleClass() }>Hide Instructions</button>
       </header>
 
       <main> {/* Main START */}
 
         <section className="fight-panel"> {/* fight panel section START */}
           <div className="computer-choice">
-            <h3>
-              Computer Chooses
-
-              <ComputerChoice />
-              <GetWeatherData
-              cityName= "Toronto"
-              />
-            </h3>
+            <h3>Computer Chooses</h3>
+            <ComputerChoice />
           </div>
           <div className="player-choice">
-            <h3>
-              Player Chooses
+            <h3>Player Chooses</h3>
               <PlayerChoice 
               cityName="Halifax"/>
-              <GetWeatherData
-              cityName="Halifax"
-              />
-            </h3>
           </div>
 
           <label htmlFor="province-select"></label>
