@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import ComputerChoice from "./Components/ComputerChoice";
 import PlayerChoice from "./Components/PlayerChoice";
 import GetWeatherData from "./Components/GetWeatherData";
+import GetCityID from "./Components/GetCityId";
 
 // Styles
 import './App.css';
@@ -31,9 +32,10 @@ function App() {
           <div className="computer-choice">
             <h3>
               Computer Chooses
+
               <ComputerChoice />
               <GetWeatherData
-              cityName="Toronto"
+              cityName= "Toronto"
               />
             </h3>
           </div>
@@ -42,9 +44,9 @@ function App() {
               Player Chooses
               <PlayerChoice 
               cityName="Halifax"/>
-            <GetWeatherData
+              <GetWeatherData
               cityName="Halifax"
-            />
+              />
             </h3>
           </div>
 

@@ -24,19 +24,15 @@ const GetWeatherData = (props) => {
   // I DONT THINK I NEED TO SET STATE BELOW JUST A DESPERATE MOVE
   const [cityName, setCityName] = useState({});
   // find ID of city for API search, add to searchURL
-  
-  
-  useEffect(() => {
-    console.log("from GetWeatherData", props);
-    
-    // console.log("city Fucking Name");
-
+  console.log("from GetWeatherData", props);
 
   // NOTE, AS IT IS NOW. IF I RUN THE BELOW CODE WITH "Halifax", "Toronto", "Vancouver", etc in tthe getCityID function, it will return the same weather data for both times it is called in them ain page. If I run getCityID() with props.cityName and SAVE the react file, it will PROPERLY return the correct data for BOTH cities... however when I REFRESH the page IT ERRORS OUT?????
 
-    const ID = getCityID("Halifax");
+    const ID = getCityID("Toronto");
     const searchURL = `${baseURL}${ID}`; 
-
+  
+  
+  useEffect(() => {
     axios({
       url: searchURL,
       method: "GET",
@@ -57,7 +53,7 @@ const GetWeatherData = (props) => {
       setPlayerSelection(combatDetailsPlayer);
       setLoading(false);
     })
-  }, [])
+  }, [searchURL])
 
   const playerTemp = playerSelection[0];
   const playerTempUnit = playerSelection[1];
