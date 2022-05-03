@@ -6,16 +6,14 @@ import { citiesList } from "./modules/citiesList";
 // Components
 import ComputerChoice from "./Components/ComputerChoice";
 import PlayerChoice from "./Components/PlayerChoice";
-import GetWeatherData from "./Components/GetWeatherData";
-import GetCityID from "./Components/GetCityId";
-import ToggleClass from "./Components/ToggleClass";
-
 
 // Styles
 import './App.css';
 
 function App() {
 
+  const [fighterChoice, setFighterChoice] = useState("Halifax");
+  const [flag, setFlag] = useState("");
   const [isActive, setActive] = useState(false);
   const ToggleClass = () => {
     setActive(!isActive);
@@ -52,7 +50,7 @@ function App() {
               </div>
 
               <div className="player-choice-image">
-                {citiesList[7].img}
+                {flag}
               </div>
             </div>
 
@@ -64,31 +62,157 @@ function App() {
               <div className="player-choice">
                 <h3>Player Chooses</h3>
                   <PlayerChoice 
-                  cityName="Halifax"/>
+                  cityName={fighterChoice}/>
               </div>
             </div>
 
-            <div className="location-list">
-              <label htmlFor="province-select"></label>
+            <div className="choose-fighter">
+              <label htmlFor="Vancouver">
+                <div className="choose">Vancouver</div>
+                <input
+                type="radio"
+                name="fighter"
+                id="Vancouver"
+                onClick={(e) => {
+                  setFighterChoice(e.target.id);
+                  setFlag(citiesList[0].img);
+                }}
+                />
+                {citiesList[0].img}
+              </label>
 
-              <select name="province-select" id="province-select">
-                <option value=""> -- Choose a Fighter -- </option>
-                <option value="british-colombia">British Colombia</option>
-                <option value="alberta">Alberta</option>
-                <option value="saskatchewan">Saskatchewan</option>
-                <option value="manitoba">Manitoba</option>
-                <option value="ontario">Ontario</option>
-                <option value="quebec">Quebec</option>
-                <option value="new-brunswick">New Brunswick</option>
-                <option value="prince-edward-island">Prince Edward Island</option>
-                <option value="nova-scotia">Nova Scotia</option>
-                <option value="newfoundland">Newfoundland & Labrador</option>
-              </select>
+              <label htmlFor="Edmonton">
+                <div className="choose">Edmonton</div>
+                <input
+                type="radio"
+                name="fighter"
+                id="Edmonton"
+                onClick={(e) => {
+                  setFighterChoice(e.target.id);
+                  setFlag(citiesList[1].img);
+                }}
+                />
+                {citiesList[1].img}
+              </label>
+
+              <label htmlFor="Regina">
+                <div className="choose">Regina</div>
+                <input
+                type="radio"
+                name="fighter"
+                id="Regina"
+                onClick={(e) => {
+                  setFighterChoice(e.target.id);
+                  setFlag(citiesList[2].img);
+                }}
+                />
+                {citiesList[2].img}
+              </label>
+
+              <label htmlFor="Winnipeg">
+                <div className="choose">Winnipeg</div>
+                <input
+                type="radio"
+                name="fighter"
+                id="Winnipeg"
+                onClick={(e) => {
+                  setFighterChoice(e.target.id);
+                  setFlag(citiesList[3].img);
+                }}
+                />
+                {citiesList[3].img}
+              </label>
+
+              <label htmlFor="Toronto">
+                <div className="choose">Toronto</div>
+                <input
+                type="radio"
+                name="fighter"
+                id="Toronto"
+                onClick={(e) => {
+                  setFighterChoice(e.target.id);
+                  setFlag(citiesList[4].img);
+                }}
+                />
+                {citiesList[4].img}
+              </label>
+
+              <label htmlFor="Quebec City">
+                <div className="choose">Quebec City</div>
+                <input
+                type="radio"
+                name="fighter"
+                id="Quebec City"
+                onClick={(e) => {
+                  setFighterChoice(e.target.id);
+                  setFlag(citiesList[5].img);
+                }}
+                />
+                {citiesList[5].img}
+              </label>
+
+              <label htmlFor="Fredericton">
+                <div className="choose">Fredericton</div>
+                <input
+                type="radio"
+                name="fighter"
+                id="Fredericton"
+                onClick={(e) => {
+                  setFighterChoice(e.target.id);
+                  setFlag(citiesList[6].img);
+                }}
+                />
+                {citiesList[6].img}
+              </label>
+
+              <label htmlFor="Charlottetown">
+                <div className="choose">Charlottetown</div>
+                <input
+                type="radio"
+                name="fighter"
+                id="Charlottetown"
+                onClick={(e) => {
+                  setFighterChoice(e.target.id);
+                  setFlag(citiesList[7].img);
+                }}
+                />
+                {citiesList[7].img}
+              </label>
+
+              <label htmlFor="Halifax">
+                <div className="choose">Halifax</div>
+                <input
+                type="radio"
+                name="fighter"
+                id="Halifax"
+                onClick={(e) => {
+                  setFighterChoice(e.target.id);
+                  setFlag(citiesList[8].img);
+                }}
+                />
+                {citiesList[8].img}
+              </label>
+
+              <label htmlFor="St. John's">
+                <div className="choose">St. John's</div>
+                <input
+                type="radio"
+                name="fighter"
+                id="St. John's"
+                onClick={(e) => {
+                  setFighterChoice(e.target.id);
+                  setFlag(citiesList[9].img);
+                }}
+                />
+                {citiesList[9].img}
+              </label>
+
             </div>
 
-            <div>
-              <label htmlFor="fight-submit"></label>
-              <button type="submit" name="fight-submit" id="fight-submit">Fight!</button>
+            <div className="fight-start">
+              <label htmlFor="fight-submit">
+                <button type="submit" name="fight-submit" id="fight-submit">Fight!</button>
+              </label>
             </div>
 
           </section> {/* fight panel section END */}
