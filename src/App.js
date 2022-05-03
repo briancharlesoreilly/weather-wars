@@ -25,42 +25,64 @@ function App() {
 
       <header>
         <h1>Weather Wars</h1>
-        <div className={isActive ? "instructions-active" : "instructions-inactive"}>
-          <h2>Instructions</h2>
-          <p>Instructions: The game is Weather Wars. There are 10 available fighters, each represented by the Capital City of each Province of our home and native land.</p>
-          <p>The bloodthirsty and heartless AI known as Math Random will select a city for combat. Brave adventurer, you must choose a city to fight against the evil M. Rando in head to head combat. A victor will be decided based on the REAL TIME temperature difference between the two cities, delivered magically with the aid of a mysterious figure who goes by "AXIOS", associated with the secretive cabal simply known as "API".</p>
-        </div>
-          <button onClick={ () => ToggleClass() }>Hide Instructions</button>
       </header>
 
       <main> {/* Main START */}
 
+        <section className="instructions">
+          <div className={isActive ? "instructions-active" : "instructions-inactive"}>
+            <h2>How To Play</h2>
+            <p>The game is Weather Wars. There are 10 available fighters, each represented by the Capital City of each Province of our home and native land.</p>
+            <p>The bloodthirsty and heartless AI known as Math Random will select a city for combat. Brave adventurer, you must choose a city to fight against the evil M. Rando in head to head combat. A victor will be decided based on the REAL TIME temperature difference between the two cities, delivered magically with the aid of a mysterious figure who goes by "AXIOS", associated with the secretive cabal simply known as "API".</p>
+          </div>
+
+          <button onClick={ () => ToggleClass() }>Tutorial</button>
+
+        </section>
+
+        
+
         <section className="fight-panel"> {/* fight panel section START */}
-          <div className="computer-choice">
-            <h3>Computer Chooses</h3>
-            <ComputerChoice />
-          </div>
-          <div className="player-choice">
-            <h3>Player Chooses</h3>
-              <PlayerChoice 
-              cityName="Halifax"/>
+
+          <div className="fight-panel-images">
+            <div className="computer-choice-image">
+                <img src="./images/alberta.jpg" alt="" />
+            </div>
+
+            <div className="player-choice-image">
+              <div></div>
+            </div>
           </div>
 
-          <label htmlFor="province-select"></label>
+          <div className="fight-panel-info">
+            <div className="computer-choice">
+              <h3>Computer Chooses</h3>
+              <ComputerChoice />
+            </div>
+            <div className="player-choice">
+              <h3>Player Chooses</h3>
+                <PlayerChoice 
+                cityName="Halifax"/>
+            </div>
+          </div>
 
-          <select name="province-select" id="province-select">
-            <option value=""> -- Choose a Fighter -- </option>
-            <option value="british-colombia">British Colombia</option>
-            <option value="alberta">Alberta</option>
-            <option value="saskatchewan">Saskatchewan</option>
-            <option value="manitoba">Manitoba</option>
-            <option value="ontario">Ontario</option>
-            <option value="quebec">Quebec</option>
-            <option value="new-brunswick">New Brunswick</option>
-            <option value="prince-edward-island">Prince Edward Island</option>
-            <option value="nova-scotia">Nova Scotia</option>
-            <option value="newfoundland">Newfoundland & Labrador</option>
-          </select>
+          <div className="location-list">
+            <label htmlFor="province-select"></label>
+
+            <select name="province-select" id="province-select">
+              <option value=""> -- Choose a Fighter -- </option>
+              <option value="british-colombia">British Colombia</option>
+              <option value="alberta">Alberta</option>
+              <option value="saskatchewan">Saskatchewan</option>
+              <option value="manitoba">Manitoba</option>
+              <option value="ontario">Ontario</option>
+              <option value="quebec">Quebec</option>
+              <option value="new-brunswick">New Brunswick</option>
+              <option value="prince-edward-island">Prince Edward Island</option>
+              <option value="nova-scotia">Nova Scotia</option>
+              <option value="newfoundland">Newfoundland & Labrador</option>
+            </select>
+          </div>
 
           <div>
             <label htmlFor="fight-submit"></label>

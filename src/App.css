@@ -2,48 +2,78 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  margin: 0;
 }
 
 /****************/
 /*    HEADER    */
 /****************/
+header {
+  background-color: black;
+  color: white;
+}
+/****************/
+/*     MAIN     */
+/****************/
+main {
+  background-image: url(./images/canada-8-bit-min.jpg);
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* position: relative; */
+}
+.instructions {
+  /* position: absolute; */
+}
 .instructions-active {
-  /* nothing. placeholder comment */
+  background-color: lightcoral;
+  border: 5px solid burlywood;
 }
 
 .instructions-inactive {
   display: none;
+}
+
+.fight-panel {
+  display: flex;
+}
+
+.fight-panel-images {
+  display: flex;
+}
+
+.computer-choice-image {
+  border: 5px solid black;
+  width: 40%;
+}
+.player-choice-image {
+  border: 5px solid black;
+  width: 40%;
+}
+
+.fight-panel-info {
+  background-color: rgba(255,255,255, 0.8);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 5px solid black;
+  border-radius: 10px;
+  margin: 40px;
+}
+
+.computer-choice {
+  width: 40%;
+}
+.player-choice {
+  width: 40%;
+}
+.location-list {
+  width: 100%;
 }
