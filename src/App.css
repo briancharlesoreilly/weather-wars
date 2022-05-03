@@ -41,7 +41,7 @@
 /*    HEADER    */
 /****************/
 .instructions-active {
-  border: 1px solid red;
+  /* nothing. placeholder comment */
 }
 
 .instructions-inactive {
