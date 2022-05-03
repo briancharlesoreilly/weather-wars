@@ -1,31 +1,31 @@
-// Hooks
+// ***********************
+// *** Modules & Hooks ***
+// ***********************
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-// Modules
 import { citiesList } from "../modules/citiesList";
 
-// Take in player selected city choice
-// find matching ID for that city in the array citiesList
-// Store that ID number to search the API in GetWeatherData
+// The function below (getCityID) takes in a city name as a string (i.e. "Halifax", "Toronto", etc) and returns the unique ID for that city that we need for the API call.
 const getCityID = (city) => {
   const findCityID = citiesList.find(e => e.city === city);
   return findCityID.id;
 }
 
+// API key and API Url for the axios call
 const apiKey = "oU28MIP77GV30LbR2diTL2ACEcTuAWoZ";
 const baseURL = "http://dataservice.accuweather.com/currentconditions/v1/";
 
-  // API call to get weather data
+// API call to get weather data
 const GetWeatherData = (props) => {
-  const [playerSelection, setPlayerSelection] = useState([]);
+  const [weather, setWeather] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // find ID of city for API search, add to searchURL
+// find ID of city for API search, add to searchURL
   const ID = getCityID(props.cityName);
   const searchURL = `${baseURL}${ID}`; 
   
+// API axios call inside a useEffect hook, with 1 dependency. This will run anytime the city name changes (props.cityName).
   useEffect(() => {
     axios({
       url: searchURL,
@@ -36,24 +36,25 @@ const GetWeatherData = (props) => {
         details: false,
       },
     }).then(response => {
-      // store response data in variables for temperature, tempurature units (celsius or fahrenheit), and text description.
+      // store response data in variables for temperature, tempurature units (celsius or fahrenheit), and brief text description of the weather (i.e. "Light rain", "Mostly cloudy", etc).
       const responseData = response.data;
       const temp = responseData[0].Temperature.Metric.Value;
       const tempUnit = responseData[0].Temperature.Metric.Unit;
       const tempText = responseData[0].WeatherText;
       // store these variables in an array 
-      const combatDetailsPlayer = [temp, tempUnit, tempText];
-      // set data into playerSelection state
-      setPlayerSelection(combatDetailsPlayer);
+      const combatDetails = [temp, tempUnit, tempText];
+      // set the array into playerSelection state
+      setWeather(combatDetails);
       setLoading(false);
     })
   }, [props.cityName])
 
-  const playerTemp = playerSelection[0];
-  const playerTempUnit = playerSelection[1];
-  const playerTempText = playerSelection[2];
+  // save response data in variables in parent scope to use in the return section below
+  const playerTemp = weather[0];
+  const playerTempUnit = weather[1];
+  const playerTempText = weather[2];
 
-  // if data has not been rec'd from API and no combat details have been set, return a LOADING message to the page...
+  // if data has not been rec'd from API and no combat details have been set, return a LOADING message to the page
   if(loading) {
     return (
       <div>
@@ -61,6 +62,7 @@ const GetWeatherData = (props) => {
       </div>
     );
   }
+  
   // if data HAS been recieved and combat details have been set...return a div and display the temperature and city name
   return (
     <div>

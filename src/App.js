@@ -1,33 +1,51 @@
-// Modules & Hooks
-import axios from "axios";
-import { useEffect, useState } from "react";
+// ***********************
+// *** Modules & Hooks ***
+// ***********************
+import { useState } from "react";
 import { citiesList } from "./modules/citiesList";
 
-// Components
+// ***********************
+// ***** Components ******
+// ***********************
 import ComputerChoice from "./Components/ComputerChoice";
 import PlayerChoice from "./Components/PlayerChoice";
 
-// Styles
+// ***********************
+// ******* Styles ********
+// ***********************
 import './App.css';
 
 function App() {
 
+  // ***************************************
+  // Declaring useStates used in main App.js
+  // ***************************************
   const [fighterChoice, setFighterChoice] = useState("Halifax");
   const [flag, setFlag] = useState("");
+  const [randomCity, setRandomCity] = useState(citiesList[Math.floor(Math.random() * citiesList.length)].city);
   const [isActive, setActive] = useState(false);
+
+  // ***************************************
+  // Some minor functions used within App.js
+  // ***************************************
+    // toggles between classes
   const ToggleClass = () => {
     setActive(!isActive);
-    console.log("is active:", isActive);
+  }
+    // return a flag image when given a city name
+  const getFlagIMG = (city) => {
+    const findFlagIMG = citiesList.find(e => e.city === city);
+    return findFlagIMG.img;
   }
 
   return (
     <div className="App">
 
-      <header>
+      <header> {/* Header START */}
         <div className="wrapper">
           <h1>Weather Wars</h1>
         </div>
-      </header>
+      </header> {/* Header END */}
 
       <main> {/* Main START */}
         <div className="wrapper"> {/* main wrapper START */}
@@ -46,7 +64,7 @@ function App() {
 
             <div className="fight-panel-images">
               <div className="computer-choice-image">
-                {citiesList[7].img}
+                {getFlagIMG(randomCity)}
               </div>
 
               <div className="player-choice-image">
@@ -57,7 +75,9 @@ function App() {
             <div className="fight-panel-info">
               <div className="computer-choice">
                 <h3>Computer Chooses</h3>
-                <ComputerChoice />
+                <ComputerChoice
+                computerCity={randomCity}
+                />
               </div>
               <div className="player-choice">
                 <h3>Player Chooses</h3>

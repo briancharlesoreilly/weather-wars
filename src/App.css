@@ -65,9 +65,11 @@ main {
 .fight-panel {
   display: flex;
   flex-wrap: wrap;
+  max-width: 1024px;
+  max-height: 375px;
   justify-content: space-around;
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
 }
 
 .fight-panel-images {
@@ -94,7 +96,7 @@ main {
   background-color: rgba(255,255,255, 0.8);
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  width: 80%;
   justify-content: space-around;
   border: 5px solid black;
   border-radius: 10px;

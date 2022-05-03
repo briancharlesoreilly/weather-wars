@@ -1,10 +1,9 @@
-// listen for radio button choice for player choice, pass here as props
-
+// ***********************
+// *** Modules & Hooks ***
+// ***********************
 import GetWeatherData from "./GetWeatherData";
 
-// call the weather API and get weather data about the player choice
-    // store this weathter data about computer choice, pass as props to the function that will decide the winner of the fight
-
+// Takes in player choice data from props, passes it to GetWeatherData() to call API and returns city name and weather information.
     const PlayerChoice = (props) => {
       const playerCityChoice = props.cityName; 
       return (

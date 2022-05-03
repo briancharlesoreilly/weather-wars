@@ -1,3 +1,4 @@
+// Importing flag images
 import BC from "../images/british-columbia.jpg";
 import AB from "../images/alberta.jpg";
 import SK from "../images/saskatchewan.jpg";
@@ -9,7 +10,8 @@ import PEI from "../images/pei.jpg";
 import NS from "../images/nova-scotia.jpg";
 import NFLD from "../images/nfld.jpg";
 
-// An Array of all available cities and their AccuWeather unique IDs. The IDs are required by the API to look up the weather data. 
+// An Array of all available cities, their provinces, unique IDs, and flag images
+// The unique IDs are required by the API to look up the weather data. 
 export const citiesList = [
   { 
     city: "Vancouver",
