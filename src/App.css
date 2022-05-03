@@ -1,9 +1,27 @@
+/****************/
+/*     SETUP    */
+/****************/
+
+/****************/
+/*    RESETS    */
+/****************/
 .App {
   text-align: center;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6, p, ul {
   margin: 0;
+}
+
+/****************/
+/* BASE STYLES  */
+/****************/
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 2200px;
+  display: flex;
+  justify-content: center;
 }
 
 /****************/
@@ -26,7 +44,10 @@ main {
   /* position: relative; */
 }
 .instructions {
-  /* position: absolute; */
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  right: 0;
 }
 .instructions-active {
   background-color: lightcoral;
@@ -39,33 +60,43 @@ main {
 
 .fight-panel {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 0;
+  /* left: 0;
+  right: 0; */
 }
 
 .fight-panel-images {
+  width: 100%;
   display: flex;
+  justify-content: space-around;
 }
 
 .computer-choice-image {
   border: 5px solid black;
-  width: 40%;
+  width: 20%;
+}
+.computer-choice-image img,
+.player-choice-image img {
+  width: 100%;
+  height: 100%;
 }
 .player-choice-image {
   border: 5px solid black;
-  width: 40%;
+  width: 20%;
 }
 
 .fight-panel-info {
   background-color: rgba(255,255,255, 0.8);
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
   justify-content: space-around;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   border: 5px solid black;
   border-radius: 10px;
-  margin: 40px;
+  margin: 5px;
 }
 
 .computer-choice {
