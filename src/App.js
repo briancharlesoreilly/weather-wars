@@ -22,7 +22,12 @@ function App() {
   // ***************************************
   const [cityChoice, setCityChoice] = useState("Halifax");
   const [flag, setFlag] = useState("");
-  const [randomCity, setRandomCity] = useState(citiesList[Math.floor(Math.random() * citiesList.length)].city);
+  // const [randomCity, setRandomCity] = useState(citiesList[Math.floor(Math.random() * citiesList.length)].city);
+
+// Will the below code suffice, and I can get rid of the useState() above?
+  const randomCity = citiesList[Math.floor(Math.random() * citiesList.length)].city;
+
+
   const [isActive, setActive] = useState(true);
   const [toggleResults, setToggleResults] = useState(false);
 
