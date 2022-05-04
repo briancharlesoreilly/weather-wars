@@ -20,10 +20,10 @@ function App() {
   // ***************************************
   // Declaring useStates used in main App.js
   // ***************************************
-  const [fighterChoice, setFighterChoice] = useState("Halifax");
+  const [cityChoice, setCityChoice] = useState("Halifax");
   const [flag, setFlag] = useState("");
   const [randomCity, setRandomCity] = useState(citiesList[Math.floor(Math.random() * citiesList.length)].city);
-  const [isActive, setActive] = useState(false);
+  const [isActive, setActive] = useState(true);
 
   // ***************************************
   // Some minor functions used within App.js
@@ -43,28 +43,49 @@ function App() {
 
       <header> {/* Header START */}
         <div className="wrapper">
-          <h1>Weather Wars</h1>
+          <nav className="nav">
+            <ul className="nav-ul">
+              <li>
+                <h1>Weather Wars</h1>
+              </li>
+              <li>
+                <button className={isActive ? "button-hide" : "button-show"} onClick={ () => ToggleClass() }>Instructions</button>
+              </li>
+            </ul>
+          </nav>
+          
         </div>
       </header> {/* Header END */}
 
       <main> {/* Main START */}
         <div className="wrapper"> {/* main wrapper START */}
-          <section className="instructions">
+          <section className="instructions"> {/* Instructions START */}
             <div className={isActive ? "instructions-active" : "instructions-inactive"}>
               <h2>How To Play</h2>
               <p>The game is Weather Wars. There are 10 available fighters, each represented by the Capital City of each Province of our home and native land.</p>
               <p>The bloodthirsty and heartless AI known as Math Random will select a city for combat. Brave adventurer, you must choose a city to fight against the evil M. Rando in head to head combat. A victor will be decided based on the REAL TIME temperature difference between the two cities, delivered magically with the aid of a mysterious figure who goes by "AXIOS", associated with the secretive cabal simply known as "API".</p>
+              <button onClick={ () => ToggleClass() }>Hide Instructions</button>
             </div>
-
-            <button onClick={ () => ToggleClass() }>Tutorial</button>
-
-          </section>
+          </section> {/* Instructions END */}
 
           <section className="fight-panel"> {/* fight panel section START */}
 
             <div className="fight-panel-images">
               <div className="computer-choice-image">
-                {getFlagIMG(randomCity)}
+                <div className="computer-flag">
+                  {getFlagIMG(randomCity)}
+                </div>
+              </div>
+
+              <div className="fight-start">
+                <div className="verses">
+                  <h2>Vs</h2>
+                </div>
+                <label htmlFor="fight-submit">
+                  <button type="submit" name="fight-submit" id="fight-submit">
+                    <p>Click here to Fight!</p>
+                  </button>
+                </label>
               </div>
 
               <div className="player-choice-image">
@@ -82,7 +103,7 @@ function App() {
               <div className="player-choice">
                 <h3>Player Chooses</h3>
                   <PlayerChoice 
-                  cityName={fighterChoice}/>
+                  cityName={cityChoice}/>
               </div>
             </div>
 
@@ -94,7 +115,7 @@ function App() {
                 name="fighter"
                 id="Vancouver"
                 onClick={(e) => {
-                  setFighterChoice(e.target.id);
+                  setCityChoice(e.target.id);
                   setFlag(citiesList[0].img);
                 }}
                 />
@@ -108,7 +129,7 @@ function App() {
                 name="fighter"
                 id="Edmonton"
                 onClick={(e) => {
-                  setFighterChoice(e.target.id);
+                  setCityChoice(e.target.id);
                   setFlag(citiesList[1].img);
                 }}
                 />
@@ -122,7 +143,7 @@ function App() {
                 name="fighter"
                 id="Regina"
                 onClick={(e) => {
-                  setFighterChoice(e.target.id);
+                  setCityChoice(e.target.id);
                   setFlag(citiesList[2].img);
                 }}
                 />
@@ -136,7 +157,7 @@ function App() {
                 name="fighter"
                 id="Winnipeg"
                 onClick={(e) => {
-                  setFighterChoice(e.target.id);
+                  setCityChoice(e.target.id);
                   setFlag(citiesList[3].img);
                 }}
                 />
@@ -150,7 +171,7 @@ function App() {
                 name="fighter"
                 id="Toronto"
                 onClick={(e) => {
-                  setFighterChoice(e.target.id);
+                  setCityChoice(e.target.id);
                   setFlag(citiesList[4].img);
                 }}
                 />
@@ -164,7 +185,7 @@ function App() {
                 name="fighter"
                 id="Quebec City"
                 onClick={(e) => {
-                  setFighterChoice(e.target.id);
+                  setCityChoice(e.target.id);
                   setFlag(citiesList[5].img);
                 }}
                 />
@@ -178,7 +199,7 @@ function App() {
                 name="fighter"
                 id="Fredericton"
                 onClick={(e) => {
-                  setFighterChoice(e.target.id);
+                  setCityChoice(e.target.id);
                   setFlag(citiesList[6].img);
                 }}
                 />
@@ -192,7 +213,7 @@ function App() {
                 name="fighter"
                 id="Charlottetown"
                 onClick={(e) => {
-                  setFighterChoice(e.target.id);
+                  setCityChoice(e.target.id);
                   setFlag(citiesList[7].img);
                 }}
                 />
@@ -206,7 +227,7 @@ function App() {
                 name="fighter"
                 id="Halifax"
                 onClick={(e) => {
-                  setFighterChoice(e.target.id);
+                  setCityChoice(e.target.id);
                   setFlag(citiesList[8].img);
                 }}
                 />
@@ -220,7 +241,7 @@ function App() {
                 name="fighter"
                 id="St. John's"
                 onClick={(e) => {
-                  setFighterChoice(e.target.id);
+                  setCityChoice(e.target.id);
                   setFlag(citiesList[9].img);
                 }}
                 />
@@ -229,11 +250,7 @@ function App() {
 
             </div>
 
-            <div className="fight-start">
-              <label htmlFor="fight-submit">
-                <button type="submit" name="fight-submit" id="fight-submit">Fight!</button>
-              </label>
-            </div>
+
 
           </section> {/* fight panel section END */}
         </div> {/* main wrapper END */}
