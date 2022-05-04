@@ -13,11 +13,9 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 .App {
   text-align: center;
 }
-
 h1, h2, h3, h4, h5, h6, p, ul {
-  margin: 0;
+  margin: 0; padding: 0;
 }
-
 /****************/
 /* BASE STYLES  */
 /****************/
@@ -28,7 +26,18 @@ h1, h2, h3, h4, h5, h6, p, ul {
   display: flex;
   justify-content: center;
 }
-
+html {
+  font-size: 62.5%;
+}
+h1 {
+  font-size: 4rem;
+}
+h2, h3 {
+  font-size: 3rem;
+}
+p {
+  font-size: 2rem;
+}
 /****************/
 /*    HEADER    */
 /****************/
@@ -50,8 +59,8 @@ header {
   border: 1px solid white;
   background-color: black;
   color: white;
-  padding: 5px 20px;
-  margin: 2px 60px;
+  padding: 10px 20px;
+  margin: auto;
   transition: all 0.2s;
 }
 .button-show:hover,
@@ -110,6 +119,27 @@ main {
   background-color: white;
   color: black;
 }
+
+/****************/
+/*   RESULTS    */
+/****************/
+.results {
+  border: 5px solid pink;
+  width: 80%;
+}
+.results-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.computer-results,
+.player-results {
+  width: 40%;
+  background-color: rgba(255,255,255, 0.8);
+  border: 5px solid black;
+  border-radius: 10px;
+}
+
+
 .fight-panel {
   display: flex;
   flex-wrap: wrap;

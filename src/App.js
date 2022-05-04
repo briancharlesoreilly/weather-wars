@@ -49,7 +49,7 @@ function App() {
                 <h1>Weather Wars</h1>
               </li>
               <li>
-                <button className={isActive ? "button-hide" : "button-show"} onClick={ () => ToggleClass() }>Instructions</button>
+                <button className={isActive ? "button-hide" : "button-show"} onClick={ () => ToggleClass() }><p>Instructions</p></button>
               </li>
             </ul>
           </nav>
@@ -64,12 +64,28 @@ function App() {
               <h2>How To Play</h2>
               <p>The game is Weather Wars. There are 10 available fighters, each represented by the Capital City of each Province of our home and native land.</p>
               <p>The bloodthirsty and heartless AI known as Math Random will select a city for combat. Brave adventurer, you must choose a city to fight against the evil M. Rando in head to head combat. A victor will be decided based on the REAL TIME temperature difference between the two cities, delivered magically with the aid of a mysterious figure who goes by "AXIOS", associated with the secretive cabal simply known as "API".</p>
-              <button onClick={ () => ToggleClass() }>Hide Instructions</button>
+              <button onClick={ () => ToggleClass() }><p>Hide Instructions</p></button>
             </div>
           </section> {/* Instructions END */}
 
-          <section className="fight-panel"> {/* fight panel section START */}
+          <section className="results">
+            <div className="results-flex">
+              <div className="computer-results">
+                <ComputerChoice
+                computerCity={randomCity}
+                />
+              </div>
 
+              <div className="player-results">
+                <PlayerChoice 
+                cityName={cityChoice}
+                />
+              </div>
+            </div>
+
+          </section>
+
+          <section className="fight-panel"> {/* fight panel section START */}
             <div className="fight-panel-images">
               <div className="computer-choice-image">
                 <div className="computer-flag">
@@ -95,15 +111,10 @@ function App() {
 
             <div className="fight-panel-info">
               <div className="computer-choice">
-                <h3>Computer Chooses</h3>
-                <ComputerChoice
-                computerCity={randomCity}
-                />
+                <h3>{randomCity}</h3>
               </div>
               <div className="player-choice">
-                <h3>Player Chooses</h3>
-                  <PlayerChoice 
-                  cityName={cityChoice}/>
+                <h3>{cityChoice}</h3>
               </div>
             </div>
 
