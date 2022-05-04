@@ -13,7 +13,7 @@ const getCityID = (city) => {
 
 // API key and API Url for the axios call
 const apiKey = "oU28MIP77GV30LbR2diTL2ACEcTuAWoZ";
-const baseURL = "http://dataservice.accuweather.com/currentconditions/v1/";
+const baseURL = "https://dataservice.accuweather.com/currentconditions/v1/";
 
 // API call to get weather data
 const GetWeatherData = (props) => {
