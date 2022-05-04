@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/briancharlesoreilly/static/css/main.0e01aa4f.css",
+    "main.js": "/briancharlesoreilly/static/js/main.8e152157.js",
+    "static/js/787.ddce4e92.chunk.js": "/briancharlesoreilly/static/js/787.ddce4e92.chunk.js",
+    "static/media/canada-8-bit-min.jpg": "/briancharlesoreilly/static/media/canada-8-bit-min.ce65d2e97ac5065d82d0.jpg",
+    "static/media/british-columbia.jpg": "/briancharlesoreilly/static/media/british-columbia.d9a3a6dbb6807d7c248e.jpg",
+    "static/media/new-brunswick.jpg": "/briancharlesoreilly/static/media/new-brunswick.6d09f1bae34b5a14b957.jpg",
+    "static/media/pei.jpg": "/briancharlesoreilly/static/media/pei.372820678a14a10ac192.jpg",
+    "static/media/nfld.jpg": "/briancharlesoreilly/static/media/nfld.b0218f7c9a2b2661449e.jpg",
+    "static/media/nova-scotia.jpg": "/briancharlesoreilly/static/media/nova-scotia.a910d8287684f5c28686.jpg",
+    "static/media/ontario.jpg": "/briancharlesoreilly/static/media/ontario.74b6036d7209d1b84b18.jpg",
+    "static/media/manitoba.jpg": "/briancharlesoreilly/static/media/manitoba.9d98c9f5ac39e3efdefa.jpg",
+    "static/media/alberta.jpg": "/briancharlesoreilly/static/media/alberta.fcb29531c310f1db7776.jpg",
+    "static/media/saskatchewan.jpg": "/briancharlesoreilly/static/media/saskatchewan.57624882dca5ce758db6.jpg",
+    "static/media/quebec.jpg": "/briancharlesoreilly/static/media/quebec.d55bf54a9ed8b4cc5806.jpg",
+    "index.html": "/briancharlesoreilly/index.html",
+    "main.0e01aa4f.css.map": "/briancharlesoreilly/static/css/main.0e01aa4f.css.map",
+    "main.8e152157.js.map": "/briancharlesoreilly/static/js/main.8e152157.js.map",
+    "787.ddce4e92.chunk.js.map": "/briancharlesoreilly/static/js/787.ddce4e92.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0e01aa4f.css",
+    "static/js/main.8e152157.js"
+  ]
+}
