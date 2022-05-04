@@ -12,7 +12,7 @@ import NFLD from "../images/nfld.jpg";
 
 // An Array of all available cities, their provinces, unique IDs, and flag images
 // The unique IDs are required by the API to look up the weather data. 
-export const citiesList = [
+export const citiesListComputer = [
   { 
     city: "Vancouver",
     province: "British Colombia",
@@ -72,11 +72,5 @@ export const citiesList = [
     province: "Newfoundland and Labrador",
     id: 49427,
     img: <img src={NFLD} alt="Flag of Newfoundland and Labrador, Canada" />
-  },
-  {
-    city: "?",
-    province: "?",
-    id: 49538,
-    img: <img src={null} alt="Picture of a question mark" />
   }
 ];

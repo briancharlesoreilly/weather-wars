@@ -3,6 +3,7 @@
 // ***********************
 import { useState } from "react";
 import { citiesList } from "./modules/citiesList";
+import { citiesListComputer } from "./modules/citiesListComputer";
 
 // ***********************
 // ***** Components ******
@@ -17,15 +18,14 @@ import './App.css';
 
 function App() {
 
+
   // ***************************************
   // Declaring useStates used in main App.js
   // ***************************************
-  const [cityChoice, setCityChoice] = useState("Halifax");
+  const [cityChoice, setCityChoice] = useState("?");
   const [flag, setFlag] = useState("");
-  // const [randomCity, setRandomCity] = useState(citiesList[Math.floor(Math.random() * citiesList.length)].city);
+  const [randomCity, setRandomCity] = useState(citiesListComputer[Math.floor(Math.random() * citiesListComputer.length)].city);
 
-// Will the below code suffice, and I can get rid of the useState() above?
-  const randomCity = citiesList[Math.floor(Math.random() * citiesList.length)].city;
 
 
   const [isActive, setActive] = useState(true);
@@ -65,42 +65,44 @@ function App() {
 
       <main> {/* Main START */}
         <div className="wrapper"> {/* main wrapper START */}
-          <section className="instructions"> {/* Instructions START */}
-            <div className={isActive ? "instructions-active" : "instructions-inactive"}>
-              <h2>How To Play</h2>
-              <p>The game is Weather Wars. There are 10 available fighters, each represented by the Capital City of each Province of our home and native land.</p>
-              <p>The bloodthirsty and heartless AI known as Math Random will select a city for combat. Brave adventurer, you must choose a city to fight against the evil M. Rando in head to head combat. A victor will be decided based on the REAL TIME temperature difference between the two cities, delivered magically with the aid of a mysterious figure who goes by "AXIOS", associated with the secretive cabal simply known as "API".</p>
-              <button onClick={ () => ToggleClass() }><p>Hide Instructions</p></button>
-            </div>
-          </section> {/* Instructions END */}
-
-          <section className={toggleResults ? "results" : "results-hide"} >
-            <div className="results-flex">
-              <div className="computer-results">
-                <ComputerChoice
-                computerCity={randomCity}
-                />
+          <div className="flex-everything">
+            
+            <section className="instructions"> {/* Instructions START */}
+              <div className={isActive ? "instructions-active" : "instructions-inactive"}>
+                <h2>How To Play</h2>
+                <p>The bloodthirsty and heartless AI known as <span className="math-random">Math Random</span> will select a Canadian capital city for combat. Brave adventurer, you must choose a city to fight back against the evil "M. Rando" in head to head combat.</p>
+                <p>A mysterious figure who goes by "AXIOS", associated with the secretive cabal simply known as "API" will deliver <span>WEATHER RELATED</span> combat details and victory will be decided based on the REAL TIME temperature difference between the two cities.</p>
+                <button onClick={ () => ToggleClass() }><p>Hide Instructions</p></button>
               </div>
+            </section> {/* Instructions END */}
 
-              <div className="player-results">
-                <PlayerChoice 
-                cityName={cityChoice}
-                />
-              </div>
-            </div>
+            <section className={toggleResults ? "results" : "results-hide"} >
+              <div className="results-flex">
+                <div className="computer-results">
+                  <ComputerChoice
+                  computerCity={randomCity}
+                  />
+                </div>
 
-          </section>
-
-          <section className="fight-panel"> {/* fight panel section START */}
-            <div className="fight-panel-images">
-              <div className="computer-choice-image">
-                <div className="computer-flag">
-                  {getFlagIMG(randomCity)}
+                <div className="player-results">
+                  <PlayerChoice 
+                  cityName={cityChoice}
+                  />
                 </div>
               </div>
 
-              <div className="fight-start">
-                <label htmlFor="fight-submit"></label>
+            </section>
+
+            <section className="fight-panel"> {/* fight panel section START */}
+              <div className="fight-panel-images">
+                <div className="computer-choice-image">
+                  <div className="computer-flag">
+                    {getFlagIMG(randomCity)}
+                  </div>
+                </div>
+
+                <div className="fight-start">
+                  <label htmlFor="fight-submit"></label>
                   <button
                   className="verses"
                   type="submit"
@@ -110,168 +112,186 @@ function App() {
                   >
                     <p>Start Fight!</p>
                   </button>
+
+                  <button
+                  className="ready-button"
+                  type="button"
+                  name="ready-button"
+                  onClick={ () => {
+                    setRandomCity(citiesListComputer[Math.floor(Math.random() * citiesListComputer.length)].city);
+
+
+
+                  }}>
+                    <p>Ready!</p>
+                  </button>
+                </div>
+
+                <div className="player-choice-image">
+                  {flag}
+                </div>
               </div>
 
-              <div className="player-choice-image">
-                {flag}
+              <div className="fight-panel-info">
+                <div className="computer-choice">
+                  <p className="choose">Math Random chose</p>
+                  <h3>{randomCity}</h3>
+                </div>
+                <div>
+                  <p className="vs">Vs</p>
+                </div>
+                <div className="player-choice">
+                  <h3>{cityChoice}</h3>
+                </div>
               </div>
-            </div>
 
-            <div className="fight-panel-info">
-              <div className="computer-choice">
-                <h3>{randomCity}</h3>
+              <div className="choose-fighter">
+                <label htmlFor="Vancouver">
+                  <div className="choose"><p>Vancouver</p></div>
+                  <input
+                  type="radio"
+                  name="fighter"
+                  id="Vancouver"
+                  onClick={(e) => {
+                    setCityChoice(e.target.id);
+                    setFlag(citiesList[0].img);
+                  }}
+                  />
+                  {citiesList[0].img}
+                </label>
+
+                <label htmlFor="Edmonton">
+                  <div className="choose"><p>Edmonton</p></div>
+                  <input
+                  type="radio"
+                  name="fighter"
+                  id="Edmonton"
+                  onClick={(e) => {
+                    setCityChoice(e.target.id);
+                    setFlag(citiesList[1].img);
+                  }}
+                  />
+                  {citiesList[1].img}
+                </label>
+
+                <label htmlFor="Regina">
+                  <div className="choose"><p>Regina</p></div>
+                  <input
+                  type="radio"
+                  name="fighter"
+                  id="Regina"
+                  onClick={(e) => {
+                    setCityChoice(e.target.id);
+                    setFlag(citiesList[2].img);
+                  }}
+                  />
+                  {citiesList[2].img}
+                </label>
+
+                <label htmlFor="Winnipeg">
+                  <div className="choose"><p>Winnipeg</p></div>
+                  <input
+                  type="radio"
+                  name="fighter"
+                  id="Winnipeg"
+                  onClick={(e) => {
+                    setCityChoice(e.target.id);
+                    setFlag(citiesList[3].img);
+                  }}
+                  />
+                  {citiesList[3].img}
+                </label>
+
+                <label htmlFor="Toronto">
+                  <div className="choose"><p>Toronto</p></div>
+                  <input
+                  type="radio"
+                  name="fighter"
+                  id="Toronto"
+                  onClick={(e) => {
+                    setCityChoice(e.target.id);
+                    setFlag(citiesList[4].img);
+                  }}
+                  />
+                  {citiesList[4].img}
+                </label>
+
+                <label htmlFor="Quebec City">
+                  <div className="choose"><p>Quebec City</p></div>
+                  <input
+                  type="radio"
+                  name="fighter"
+                  id="Quebec City"
+                  onClick={(e) => {
+                    setCityChoice(e.target.id);
+                    setFlag(citiesList[5].img);
+                  }}
+                  />
+                  {citiesList[5].img}
+                </label>
+
+                <label htmlFor="Fredericton">
+                  <div className="choose"><p>Fredericton</p></div>
+                  <input
+                  type="radio"
+                  name="fighter"
+                  id="Fredericton"
+                  onClick={(e) => {
+                    setCityChoice(e.target.id);
+                    setFlag(citiesList[6].img);
+                  }}
+                  />
+                  {citiesList[6].img}
+                </label>
+
+                <label htmlFor="Charlottetown">
+                  <div className="choose"><p>Charlottetown</p></div>
+                  <input
+                  type="radio"
+                  name="fighter"
+                  id="Charlottetown"
+                  onClick={(e) => {
+                    setCityChoice(e.target.id);
+                    setFlag(citiesList[7].img);
+                  }}
+                  />
+                  {citiesList[7].img}
+                </label>
+
+                <label htmlFor="Halifax">
+                  <div className="choose"><p>Halifax</p></div>
+                  <input
+                  type="radio"
+                  name="fighter"
+                  id="Halifax"
+                  onClick={(e) => {
+                    setCityChoice(e.target.id);
+                    setFlag(citiesList[8].img);
+                  }}
+                  />
+                  {citiesList[8].img}
+                </label>
+
+                <label htmlFor="St. John's">
+                  <div className="choose"><p>St. John's</p></div>
+                  <input
+                  type="radio"
+                  name="fighter"
+                  id="St. John's"
+                  onClick={(e) => {
+                    setCityChoice(e.target.id);
+                    setFlag(citiesList[9].img);
+                  }}
+                  />
+                  {citiesList[9].img}
+                </label>
+
               </div>
-              <div>
-                <p>Vs</p>
-              </div>
-              <div className="player-choice">
-                <h3>{cityChoice}</h3>
-              </div>
-            </div>
+            </section> {/* fight panel section END */}
 
-            <div className="choose-fighter">
-              <label htmlFor="Vancouver">
-                <div className="choose"><p>Vancouver</p></div>
-                <input
-                type="radio"
-                name="fighter"
-                id="Vancouver"
-                onClick={(e) => {
-                  setCityChoice(e.target.id);
-                  setFlag(citiesList[0].img);
-                }}
-                />
-                {citiesList[0].img}
-              </label>
 
-              <label htmlFor="Edmonton">
-                <div className="choose"><p>Edmonton</p></div>
-                <input
-                type="radio"
-                name="fighter"
-                id="Edmonton"
-                onClick={(e) => {
-                  setCityChoice(e.target.id);
-                  setFlag(citiesList[1].img);
-                }}
-                />
-                {citiesList[1].img}
-              </label>
 
-              <label htmlFor="Regina">
-                <div className="choose"><p>Regina</p></div>
-                <input
-                type="radio"
-                name="fighter"
-                id="Regina"
-                onClick={(e) => {
-                  setCityChoice(e.target.id);
-                  setFlag(citiesList[2].img);
-                }}
-                />
-                {citiesList[2].img}
-              </label>
-
-              <label htmlFor="Winnipeg">
-                <div className="choose"><p>Winnipeg</p></div>
-                <input
-                type="radio"
-                name="fighter"
-                id="Winnipeg"
-                onClick={(e) => {
-                  setCityChoice(e.target.id);
-                  setFlag(citiesList[3].img);
-                }}
-                />
-                {citiesList[3].img}
-              </label>
-
-              <label htmlFor="Toronto">
-                <div className="choose"><p>Toronto</p></div>
-                <input
-                type="radio"
-                name="fighter"
-                id="Toronto"
-                onClick={(e) => {
-                  setCityChoice(e.target.id);
-                  setFlag(citiesList[4].img);
-                }}
-                />
-                {citiesList[4].img}
-              </label>
-
-              <label htmlFor="Quebec City">
-                <div className="choose"><p>Quebec City</p></div>
-                <input
-                type="radio"
-                name="fighter"
-                id="Quebec City"
-                onClick={(e) => {
-                  setCityChoice(e.target.id);
-                  setFlag(citiesList[5].img);
-                }}
-                />
-                {citiesList[5].img}
-              </label>
-
-              <label htmlFor="Fredericton">
-                <div className="choose"><p>Fredericton</p></div>
-                <input
-                type="radio"
-                name="fighter"
-                id="Fredericton"
-                onClick={(e) => {
-                  setCityChoice(e.target.id);
-                  setFlag(citiesList[6].img);
-                }}
-                />
-                {citiesList[6].img}
-              </label>
-
-              <label htmlFor="Charlottetown">
-                <div className="choose"><p>Charlottetown</p></div>
-                <input
-                type="radio"
-                name="fighter"
-                id="Charlottetown"
-                onClick={(e) => {
-                  setCityChoice(e.target.id);
-                  setFlag(citiesList[7].img);
-                }}
-                />
-                {citiesList[7].img}
-              </label>
-
-              <label htmlFor="Halifax">
-                <div className="choose"><p>Halifax</p></div>
-                <input
-                type="radio"
-                name="fighter"
-                id="Halifax"
-                onClick={(e) => {
-                  setCityChoice(e.target.id);
-                  setFlag(citiesList[8].img);
-                }}
-                />
-                {citiesList[8].img}
-              </label>
-
-              <label htmlFor="St. John's">
-                <div className="choose"><p>St. John's</p></div>
-                <input
-                type="radio"
-                name="fighter"
-                id="St. John's"
-                onClick={(e) => {
-                  setCityChoice(e.target.id);
-                  setFlag(citiesList[9].img);
-                }}
-                />
-                {citiesList[9].img}
-              </label>
-
-            </div>
-          </section> {/* fight panel section END */}
+          </div>
         </div> {/* main wrapper END */}
       </main> {/* Main END */}
 
