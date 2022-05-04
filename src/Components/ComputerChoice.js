@@ -7,7 +7,7 @@ const ComputerChoice = (props) => {
 
   return (
     <div>
-      <p>{props.computerCity}</p>
+      <p className="city-name">{props.computerCity}</p>
       <GetWeatherData
       cityName= {props.computerCity}
       />

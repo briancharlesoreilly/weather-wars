@@ -24,6 +24,7 @@ function App() {
   const [flag, setFlag] = useState("");
   const [randomCity, setRandomCity] = useState(citiesList[Math.floor(Math.random() * citiesList.length)].city);
   const [isActive, setActive] = useState(true);
+  const [toggleResults, setToggleResults] = useState(false);
 
   // ***************************************
   // Some minor functions used within App.js
@@ -68,7 +69,7 @@ function App() {
             </div>
           </section> {/* Instructions END */}
 
-          <section className="results">
+          <section className={toggleResults ? "results" : "results-hide"} >
             <div className="results-flex">
               <div className="computer-results">
                 <ComputerChoice
@@ -94,14 +95,16 @@ function App() {
               </div>
 
               <div className="fight-start">
-                <div className="verses">
-                  <h2>Vs</h2>
-                </div>
-                <label htmlFor="fight-submit">
-                  <button type="submit" name="fight-submit" id="fight-submit">
-                    <p>Click here to Fight!</p>
+                <label htmlFor="fight-submit"></label>
+                  <button
+                  className="verses"
+                  type="submit"
+                  name="fight-submit"
+                  id="fight-submit"
+                  onClick={ () => setToggleResults(!toggleResults) }
+                  >
+                    <p>Start Fight!</p>
                   </button>
-                </label>
               </div>
 
               <div className="player-choice-image">
@@ -113,6 +116,9 @@ function App() {
               <div className="computer-choice">
                 <h3>{randomCity}</h3>
               </div>
+              <div>
+                <p>Vs</p>
+              </div>
               <div className="player-choice">
                 <h3>{cityChoice}</h3>
               </div>
@@ -120,7 +126,7 @@ function App() {
 
             <div className="choose-fighter">
               <label htmlFor="Vancouver">
-                <div className="choose">Vancouver</div>
+                <div className="choose"><p>Vancouver</p></div>
                 <input
                 type="radio"
                 name="fighter"
@@ -134,7 +140,7 @@ function App() {
               </label>
 
               <label htmlFor="Edmonton">
-                <div className="choose">Edmonton</div>
+                <div className="choose"><p>Edmonton</p></div>
                 <input
                 type="radio"
                 name="fighter"
@@ -148,7 +154,7 @@ function App() {
               </label>
 
               <label htmlFor="Regina">
-                <div className="choose">Regina</div>
+                <div className="choose"><p>Regina</p></div>
                 <input
                 type="radio"
                 name="fighter"
@@ -162,7 +168,7 @@ function App() {
               </label>
 
               <label htmlFor="Winnipeg">
-                <div className="choose">Winnipeg</div>
+                <div className="choose"><p>Winnipeg</p></div>
                 <input
                 type="radio"
                 name="fighter"
@@ -176,7 +182,7 @@ function App() {
               </label>
 
               <label htmlFor="Toronto">
-                <div className="choose">Toronto</div>
+                <div className="choose"><p>Toronto</p></div>
                 <input
                 type="radio"
                 name="fighter"
@@ -190,7 +196,7 @@ function App() {
               </label>
 
               <label htmlFor="Quebec City">
-                <div className="choose">Quebec City</div>
+                <div className="choose"><p>Quebec City</p></div>
                 <input
                 type="radio"
                 name="fighter"
@@ -204,7 +210,7 @@ function App() {
               </label>
 
               <label htmlFor="Fredericton">
-                <div className="choose">Fredericton</div>
+                <div className="choose"><p>Fredericton</p></div>
                 <input
                 type="radio"
                 name="fighter"
@@ -218,7 +224,7 @@ function App() {
               </label>
 
               <label htmlFor="Charlottetown">
-                <div className="choose">Charlottetown</div>
+                <div className="choose"><p>Charlottetown</p></div>
                 <input
                 type="radio"
                 name="fighter"
@@ -232,7 +238,7 @@ function App() {
               </label>
 
               <label htmlFor="Halifax">
-                <div className="choose">Halifax</div>
+                <div className="choose"><p>Halifax</p></div>
                 <input
                 type="radio"
                 name="fighter"
@@ -246,7 +252,7 @@ function App() {
               </label>
 
               <label htmlFor="St. John's">
-                <div className="choose">St. John's</div>
+                <div className="choose"><p>St. John's</p></div>
                 <input
                 type="radio"
                 name="fighter"
@@ -260,9 +266,6 @@ function App() {
               </label>
 
             </div>
-
-
-
           </section> {/* fight panel section END */}
         </div> {/* main wrapper END */}
       </main> {/* Main END */}

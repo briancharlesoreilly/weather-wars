@@ -8,7 +8,7 @@ import GetWeatherData from "./GetWeatherData";
       const playerCityChoice = props.cityName; 
       return (
         <>
-          <p>{playerCityChoice}</p>
+          <p className="city-name">{playerCityChoice}</p>
           <GetWeatherData
           cityName= {playerCityChoice}
           />

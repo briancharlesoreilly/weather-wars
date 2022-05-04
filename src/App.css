@@ -71,7 +71,6 @@ header {
 .button-hide {
   visibility: hidden;
 }
-
 /****************/
 /*     MAIN     */
 /****************/
@@ -82,8 +81,10 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  /* position: relative; */
 }
+/****************/
+/* Instructions */
+/****************/
 .instructions {
   position: absolute;
   z-index: 100;
@@ -119,17 +120,27 @@ main {
   background-color: white;
   color: black;
 }
-
 /****************/
 /*   RESULTS    */
 /****************/
 .results {
-  border: 5px solid pink;
+  display: block;
   width: 80%;
+  margin: 100px 0;
+}
+.results-hide {
+  display: none;
 }
 .results-flex {
   display: flex;
   justify-content: space-between;
+  text-align: center;
+}
+.results-flex p {
+  font-size: 3rem;
+}
+.results-flex .city-name {
+  font-weight: bold;
 }
 .computer-results,
 .player-results {
@@ -138,8 +149,9 @@ main {
   border: 5px solid black;
   border-radius: 10px;
 }
-
-
+/****************/
+/* Fight Panel  */
+/****************/
 .fight-panel {
   display: flex;
   flex-wrap: wrap;
@@ -171,11 +183,22 @@ main {
   justify-content: space-around;
 }
 .fight-start .verses {
+  width: auto;
+  height: 50%;
   background-color: black;
   color: white;
-  border: 5px solid red;
+  border: 1px solid white;
   margin: 10px;
-  border-radius: 10px;
+}
+.fight-start .verses:hover,
+.fight-start .verses:focus {
+  background-color: white;
+  color: black;
+  transition: all 0.2s;
+}
+.fight-start .verses:active {
+  background-color: red;
+  transition: all 0s;
 }
 .fight-start h2 {
   padding: 20px;
@@ -191,11 +214,11 @@ main {
   flex-wrap: wrap;
   width: 80%;
   justify-content: space-around;
+  align-items: center;
   border: 5px solid black;
   border-radius: 10px;
   margin: 5px;
 }
-
 .computer-choice {
   width: 40%;
 }
@@ -205,7 +228,6 @@ main {
 .location-list {
   width: 100%;
 }
-
 .choose-fighter {
   display: flex;
   flex-wrap: wrap;
