@@ -1,7 +1,7 @@
 // ***********************
 // *** Modules & Hooks ***
 // ***********************
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { citiesList } from "./modules/citiesList";
 import { citiesListComputer } from "./modules/citiesListComputer";
 
@@ -10,6 +10,7 @@ import { citiesListComputer } from "./modules/citiesListComputer";
 // ***********************
 import ComputerChoice from "./Components/ComputerChoice";
 import PlayerChoice from "./Components/PlayerChoice";
+import CombatCalculator from "./Components/CombatCalculator";
 
 // ***********************
 // ******* Styles ********
@@ -28,6 +29,7 @@ function App() {
   const [isActive, setActive] = useState(true);
   const [toggleResults, setToggleResults] = useState(false);
   const [showGame, setShowGame] = useState(false);
+  const [winDetails, setWinDetails] = useState([]);
 
   // ***************************************
   // Some minor functions used within App.js
@@ -38,7 +40,6 @@ function App() {
   }
   const StartGame = () => {
     setShowGame(!showGame);
-    console.log(showGame);
   }
     // return a flag image when given a city name
   const getFlagIMG = (city) => {
@@ -88,6 +89,13 @@ function App() {
           <div className={showGame ? "flex-everything" : "flex-everything-hide"}>
             <section className={toggleResults ? "results" : "results-hide"} >
               <div className="results-flex">
+
+                <div>
+                  <CombatCalculator 
+                  metrics={winDetails}
+                  />
+                </div>
+
                 <div className="computer-results">
                   <ComputerChoice
                   computerCity={randomCity}
@@ -100,7 +108,6 @@ function App() {
                   />
                 </div>
               </div>
-
             </section>
 
             <section className="fight-panel"> {/* fight panel section START */}
@@ -118,8 +125,10 @@ function App() {
                   type="submit"
                   name="fight-submit"
                   id="fight-submit"
-                  onClick={ () => setToggleResults(!toggleResults) }
-                  >
+                  onClick={ () => {
+                    setToggleResults(!toggleResults);
+                    setWinDetails([randomCity, cityChoice]);
+                    }}>
                     <p>Fight!</p>
                   </button>
                 </div>
