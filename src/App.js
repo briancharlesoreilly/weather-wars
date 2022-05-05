@@ -10,7 +10,7 @@ import { citiesListComputer } from "./modules/citiesListComputer";
 // ***********************
 import ComputerChoice from "./Components/ComputerChoice";
 import PlayerChoice from "./Components/PlayerChoice";
-import GetCombatData from "./Components/GetCombatData";
+
 
 // ***********************
 // ******* Styles ********
@@ -18,7 +18,6 @@ import GetCombatData from "./Components/GetCombatData";
 import './App.css';
 
 function App() {
-
 
   // ***************************************
   // Declaring useStates used in main App.js
@@ -89,12 +88,6 @@ function App() {
           <div className={showGame ? "flex-everything" : "flex-everything-hide"}>
             <section className={toggleResults ? "results" : "results-hide"} >
               <div className="results-flex">
-
-                {/* <div className="winner">
-                      <GetCombatData 
-                      metrics={winDetails}
-                      />
-                </div> */}
 
                 <div className="computer-results">
                   <ComputerChoice
