@@ -28,7 +28,7 @@ function App() {
   const [isActive, setActive] = useState(true);
   const [toggleResults, setToggleResults] = useState(false);
   const [showGame, setShowGame] = useState(false);
-  const [winDetails, setWinDetails] = useState([]);
+  // const [winDetails, setWinDetails] = useState([]);
 
   // ***************************************
   // Some minor functions used within App.js
@@ -122,7 +122,7 @@ function App() {
                   id="fight-submit"
                   onClick={ () => {
                     setToggleResults(!toggleResults);
-                    setWinDetails([randomCity, cityChoice]);
+                    // setWinDetails([randomCity, cityChoice]);
                     }}>
                     <p>Fight!</p>
                   </button>
