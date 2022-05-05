@@ -18,8 +18,10 @@ const baseURL = "https://dataservice.accuweather.com/currentconditions/v1/";
 // API call to get weather data
 const GetWeatherData = (props) => {
   const [weather, setWeather] = useState([]);
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+
+  // set error handling below when ready
+  // const [error, setError] = useState("");
 
 // find ID of city for API search, add to searchURL
   const ID = getCityID(props.cityName);
@@ -47,7 +49,7 @@ const GetWeatherData = (props) => {
       setWeather(combatDetails);
       setLoading(false);
     })
-  }, [props.cityName])
+  }, [searchURL])
 
   // save response data in variables in parent scope to use in the return section below
   const playerTemp = weather[0];
