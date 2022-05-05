@@ -25,11 +25,9 @@ function App() {
   const [cityChoice, setCityChoice] = useState("?");
   const [flag, setFlag] = useState("");
   const [randomCity, setRandomCity] = useState(citiesListComputer[Math.floor(Math.random() * citiesListComputer.length)].city);
-
-
-
   const [isActive, setActive] = useState(true);
   const [toggleResults, setToggleResults] = useState(false);
+  const [showGame, setShowGame] = useState(false);
 
   // ***************************************
   // Some minor functions used within App.js
@@ -37,6 +35,10 @@ function App() {
     // toggles between classes
   const ToggleClass = () => {
     setActive(!isActive);
+  }
+  const StartGame = () => {
+    setShowGame(!showGame);
+    console.log(showGame);
   }
     // return a flag image when given a city name
   const getFlagIMG = (city) => {
@@ -59,23 +61,31 @@ function App() {
               </li>
             </ul>
           </nav>
-          
         </div>
-      </header> {/* Header END */}
-
-      <main> {/* Main START */}
-        <div className="wrapper"> {/* main wrapper START */}
-          <div className="flex-everything">
-            
-            <section className="instructions"> {/* Instructions START */}
+        <section className="instructions"> {/* Instructions START */}
               <div className={isActive ? "instructions-active" : "instructions-inactive"}>
-                <h2>How To Play</h2>
+                <h2>Weather Wars!</h2>
                 <p>The bloodthirsty and heartless AI known as <span className="math-random">Math Random</span> will select a Canadian capital city for combat. Brave adventurer, you must choose a city to fight back against the evil "M. Rando" in head to head combat.</p>
                 <p>A mysterious figure who goes by "AXIOS", associated with the secretive cabal simply known as "API" will deliver <span>WEATHER RELATED</span> combat details and victory will be decided based on the REAL TIME temperature difference between the two cities.</p>
                 <button onClick={ () => ToggleClass() }><p>Hide Instructions</p></button>
               </div>
             </section> {/* Instructions END */}
+      </header> {/* Header END */}
 
+      <main> {/* Main START */}
+        <button
+          className={!showGame ? "ready-button" : "ready-button-hide"}
+          type="button"
+          name="ready-button"
+          onClick={ () => {
+            setRandomCity(citiesListComputer[Math.floor(Math.random() * citiesListComputer.length)].city);
+            StartGame();
+            }}>
+            <p>Start Game</p>
+        </button>
+
+        <div className="wrapper"> {/* main wrapper START */}
+          <div className={showGame ? "flex-everything" : "flex-everything-hide"}>
             <section className={toggleResults ? "results" : "results-hide"} >
               <div className="results-flex">
                 <div className="computer-results">
@@ -110,20 +120,7 @@ function App() {
                   id="fight-submit"
                   onClick={ () => setToggleResults(!toggleResults) }
                   >
-                    <p>Start Fight!</p>
-                  </button>
-
-                  <button
-                  className="ready-button"
-                  type="button"
-                  name="ready-button"
-                  onClick={ () => {
-                    setRandomCity(citiesListComputer[Math.floor(Math.random() * citiesListComputer.length)].city);
-
-
-
-                  }}>
-                    <p>Ready!</p>
+                    <p>Fight!</p>
                   </button>
                 </div>
 
@@ -141,6 +138,7 @@ function App() {
                   <p className="vs">Vs</p>
                 </div>
                 <div className="player-choice">
+                  <p className="choose">You chose</p>
                   <h3>{cityChoice}</h3>
                 </div>
               </div>
@@ -285,12 +283,8 @@ function App() {
                   />
                   {citiesList[9].img}
                 </label>
-
               </div>
             </section> {/* fight panel section END */}
-
-
-
           </div>
         </div> {/* main wrapper END */}
       </main> {/* Main END */}
