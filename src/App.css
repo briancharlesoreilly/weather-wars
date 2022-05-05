@@ -213,8 +213,9 @@ main {
 }
 .results-flex {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;;
   text-align: center;
+  flex-wrap: wrap;
 }
 .results-flex p {
   font-size: 3rem;

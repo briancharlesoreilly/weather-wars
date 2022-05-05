@@ -1,7 +1,7 @@
 // ***********************
 // *** Modules & Hooks ***
 // ***********************
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { citiesList } from "./modules/citiesList";
 import { citiesListComputer } from "./modules/citiesListComputer";
 
@@ -10,7 +10,7 @@ import { citiesListComputer } from "./modules/citiesListComputer";
 // ***********************
 import ComputerChoice from "./Components/ComputerChoice";
 import PlayerChoice from "./Components/PlayerChoice";
-import CombatCalculator from "./Components/CombatCalculator";
+import GetCombatData from "./Components/GetCombatData";
 
 // ***********************
 // ******* Styles ********
@@ -90,21 +90,23 @@ function App() {
             <section className={toggleResults ? "results" : "results-hide"} >
               <div className="results-flex">
 
-                <div>
-                  <CombatCalculator 
-                  metrics={winDetails}
-                  />
-                </div>
+                {/* <div className="winner">
+                      <GetCombatData 
+                      metrics={winDetails}
+                      />
+                </div> */}
 
                 <div className="computer-results">
                   <ComputerChoice
                   computerCity={randomCity}
+                  cityName={cityChoice}
                   />
                 </div>
 
                 <div className="player-results">
                   <PlayerChoice 
                   cityName={cityChoice}
+                  computerCity={randomCity}
                   />
                 </div>
               </div>
