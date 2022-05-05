@@ -77,6 +77,6 @@ export const citiesList = [
     city: "?",
     province: "?",
     id: 49538,
-    img: <img src={null} alt={null} />
+    img: <img src={null} alt="" />
   }
 ];
